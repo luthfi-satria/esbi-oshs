@@ -1,0 +1,49 @@
+body{
+    background: #f3f3f3;
+    font-size: 12pt;
+}
+
+#content_wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    overflow-y: auto;
+    align-items: center;
+}
+
+.wrapper{
+    width: 75%;
+    padding:10px;
+    position: relative;
+}
+
+.text-right{
+    text-align: right;
+}
+
+.btn.btn-primary{
+    background-color: #f99a9b;
+    border: 1px solid #dd7b7c;
+}
+
+.btn{
+    border-radius: 20px !important;
+    font-weight: 600 !important;
+}
+
+.btn.btn-primary:hover{
+    background-color: #cb7a7b;
+    border: 1px solid #dd7b7c;
+}
+
+#form-registrasi, #form-login{
+    border: none;
+}
+#form-registrasi h1, #form-login h1{
+    color: #f99a9b;
+}
+.hidden{
+    display: none;
+}

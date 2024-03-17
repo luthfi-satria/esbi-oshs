@@ -1,0 +1,7 @@
+VERSION=1.0.0
+
+DB_HOST=localhost
+DB_USER=sditalkautsar
+DB_PASS=@lkauts4r
+DB_NAME=test_oshs
+DB_PORT=3306
