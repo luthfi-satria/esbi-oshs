@@ -24,12 +24,18 @@ class Users{
 
     function list(){
         $view = new Render;
-        $view->view('list');
+        $user_data = $this->model->getAllUsers();
+        $view->view('list', $user_data);
+    }
+
+    function edit($id){
+        $view = new Render;
+        $user_data = $this->model->getUserByID($id);
+        $view->view('edit', $user_data);
     }
 
     function authenticate(){
         try{
-            ob_start();
             $data = $_POST;
             if($validate = self::validateUser($data)){
                 $registerUser = $this->model->loginUser($data);
@@ -78,19 +84,49 @@ class Users{
         }
     }
 
-    function update(){
+    function update($id){
         try{
-
+            $data = $_POST;
+            if($validate = self::validateUser($data)){
+                $registerUser = $this->model->updateUser($data, $id);
+                if($registerUser){
+                    echo json_encode([
+                        "code" => 200,
+                        "message" => "user berhasil diubah",
+                    ]);
+                    echo "<script type='text/javascript'>window.location.href = '/list_user';</script>";
+                    exit();
+                }
+                echo json_encode([
+                    "code" => 406,
+                    "message" => "user gagal diubah",
+                ]);
+                exit();
+            }
+            throw new Exception($validate[0]);
         }catch(Exception $error){
-            return $error->getMessage();
+            echo json_encode($error->getMessage());
         }
     }
 
-    function delete(){
+    function delete($id){
         try{
-
+            $deleteUser = $this->model->deleteUser($id);
+            if($deleteUser){
+                echo json_encode([
+                    "code" => 200,
+                    "message" => "user berhasil dihapus",
+                ]);
+                exit();
+            }
+            echo json_encode([
+                "code" => 406,
+                "message" => "user gagal dihapus",
+                "id" => $id,
+            ]);
+            exit();
         }catch(Exception $error){
-            return $error->getMessage();
+            echo json_encode($error->getMessage());
         }
     }
 

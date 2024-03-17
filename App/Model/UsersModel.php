@@ -10,8 +10,16 @@ class UsersModel extends CoreModel{
         return $result->fetch_object();
     }
 
-    function getAllUsers(){
+    function getUserByID($id){
+        $query = "SELECT * from users where id='".$id."'";
+        $result = $this->db->query($query);
+        return $result->fetch_object();
+    }
 
+    function getAllUsers(){
+        $query = "SELECT * from users";
+        $result = $this->db->query($query);
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
     function loginUser($data){
@@ -36,11 +44,16 @@ class UsersModel extends CoreModel{
         return false;
     }
 
-    function updateUser(){
-
+    function updateUser($data, $id){
+        $username = $data['username'];
+        $email = $data['email'];
+        
+        $updateSQL = "UPDATE users SET username='$username', email='$email' WHERE id='$id'";
+        return $this->db->query($updateSQL);
     }
 
-    function deleteUser(){
-
+    function deleteUser($id){
+        $updateSQL = "DELETE FROM users WHERE id='$id'";
+        return $this->db->query($updateSQL);
     }
 }

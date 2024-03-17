@@ -47,3 +47,7 @@ body{
 .hidden{
     display: none;
 }
+.responsive{
+    overflow: hidden;
+    overflow-x: scroll;
+}

@@ -47,3 +47,23 @@ function validateRegister(){
     }
     return validate;
 }
+
+function deleteUser(id){
+    $.ajax({
+        type: "DELETE",
+        url: "/delete/"+id,
+        dataType: "json",
+    })
+    .done(function(data, status, XHR){
+        if(data.code == 406){
+            alert(data?.message);
+        }
+        else{
+            window.location.reload();
+        }
+    })
+    .fail(function(XHR){
+        console.log("error", XHR);
+    })
+    ;
+}
