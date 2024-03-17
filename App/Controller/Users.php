@@ -52,6 +52,7 @@ class Users{
                     "code" => 406,
                     "message" => "user gagal login",
                 ]);
+                echo "<script type='text/javascript'>window.location.href = '/signin';</script>";
                 exit();
             }
             throw new Exception($validate[0]);
