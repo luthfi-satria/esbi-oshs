@@ -31,3 +31,7 @@ $ php -S localhost:9000
 4. Edit User
 [http://localhost:9000/edit/:id](#)
 
+
+## LAMPIRAN / LAYOUT EXAMPLE
+### Contoh layout dapat dilihat pada URL berikut
+- [GOOGLE DRIVE](https://drive.google.com/drive/folders/1fp_91KFJtcTqSiBOo7ky4Y6QjXTZpKXC?usp=sharing)
